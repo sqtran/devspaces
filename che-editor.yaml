@@ -1,0 +1,31 @@
+apiVersion: org.eclipse.che/v2
+kind: CheEditor
+metadata:
+  name: vscode
+  labels:
+    che.eclipse.org/editor: vscode
+spec:
+  title: "VS Code"
+  description: "VS Code editor for Eclipse Che"
+  icon: "https://code.visualstudio.com/assets/favicon.ico"
+  displayName: "VS Code"
+  category: "Editors"
+  repository:
+    url: "https://github.com/eclipse-che/che-plugin-registry"
+    reference: "main"
+  publisher: "Eclipse Che"
+  type: "cheEditor"
+  editor:
+    image: "quay.io/eclipse/che-code:latest"
+    memoryRequest: "512Mi"
+    memoryLimit: "1Gi"
+    cpuRequest: "250m"
+    cpuLimit: "500m"
+  extensions:
+    - ms-python.python
+    - ms-vscode.cpptools
+    - redhat.vscode-yaml
+    - eamodio.gitlens
+  volumes:
+    - name: vscode-config
+      size: 1Gi
